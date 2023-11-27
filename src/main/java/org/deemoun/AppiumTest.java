@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,6 +12,22 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 import static org.junit.Assert.assertEquals;
+
+/* Примеры других аннотаций в JUnit
+    @Test
+    @Before
+    @After
+    @BeforeClass
+    @AfterClass
+    @Ignore
+    @RunWith
+    @Parameters
+    @ParameterizedTest
+    @Test(expected)
+    @Test(timeout)
+    @Disabled
+    @DisplayName
+ */
 
 public class AppiumTest {
 
