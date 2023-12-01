@@ -8,9 +8,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 
 /* Примеры других аннотаций в JUnit
@@ -48,21 +51,26 @@ public class AppiumTest {
         driver.navigate().back();
     }
 
+    public void waitForMoment(AppiumDriver driver){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+    }
+
     public void pressButton(AppiumDriver driver, String xpath){
-        driver.findElement(By.xpath(xpath)).click();
+        driver.findElement(By.xpath(xpath));
     }
 
     @Test
     public void pressTextButton() {
         // Test Logic Goes Here
-        pressButton(driver,"//android.widget.TextView[@content-desc=\"Text\"]");
-        navigateBack(driver);
+        pressButton(driver,"//*[@content-desc='Text']");
+        //navigateBack(driver);
     }
 
 
     @Test
     public void pressAnimationButton(){
-        pressButton(driver,"//android.widget.TextView[@content-desc=\"Animation\"]");
+        waitForMoment(driver);
+        pressButton(driver,"//*[@content-desc='Animation']");
     }
 
     @AfterClass
