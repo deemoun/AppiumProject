@@ -44,23 +44,25 @@ public class AppiumTest {
         driver = new AndroidDriver(appiumServerURL, caps);
     }
 
-//    @Test
-//    public void checkNumber(){
-//        int a = 5;
-//        int b = 5;
-//        int c = a + b;
-//        assertEquals(10, c);
-//    }
-    @Test
-    public void pressTextButton() {
-        // Test Logic Goes Here
-        driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Text\"]")).click();
+    public void navigateBack(AppiumDriver driver){
         driver.navigate().back();
     }
 
+    public void pressButton(AppiumDriver driver, String xpath){
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    @Test
+    public void pressTextButton() {
+        // Test Logic Goes Here
+        pressButton(driver,"//android.widget.TextView[@content-desc=\"Text\"]");
+        navigateBack(driver);
+    }
+
+
     @Test
     public void pressAnimationButton(){
-        driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Animation\"]"));
+        pressButton(driver,"//android.widget.TextView[@content-desc=\"Animation\"]");
     }
 
     @AfterClass
